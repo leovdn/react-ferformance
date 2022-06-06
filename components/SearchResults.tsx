@@ -6,20 +6,17 @@ interface SearchResultsProps {
     id: number
     price: number
     title: string
+    priceFormatted: string
   }>
+  totalPrice: number
   onAddToWishList: (id: number) => void
 }
 
 export function SearchResults({
   results,
+  totalPrice,
   onAddToWishList,
 }: SearchResultsProps) {
-  const totalPrice = useMemo(() => {
-    return results.reduce((total, product) => {
-      return total + product.price
-    }, 0)
-  }, [results])
-
   return (
     <div>
       <h2>Total: {totalPrice}</h2>
