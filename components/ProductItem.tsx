@@ -29,7 +29,10 @@ function ProductItemComponent({ product, onAddToWishList }: ProductItemProps) {
   return (
     <div>
       {product.title} - <strong>{product.priceFormatted}</strong>
-      <button onClick={() => setIsAddingToWishList(true)}>
+      <button
+        onClick={() => setIsAddingToWishList(true)}
+        style={{ marginLeft: 8 }}
+      >
         Adicionar aos favoritos
       </button>
       {isAddingToWishList && (
