@@ -4,14 +4,14 @@ import { FormEvent, useCallback, useMemo, useState } from "react"
 import { SearchResults } from "../components/SearchResults"
 
 type Results = {
-  totalPrice: number
+  totalPrice: String
   data: any[]
 }
 
 const Home: NextPage = () => {
   const [search, setSearch] = useState("")
   const [results, setResults] = useState<Results>({
-    totalPrice: 0,
+    totalPrice: "0",
     data: [],
   })
 
@@ -39,9 +39,11 @@ const Home: NextPage = () => {
       }
     })
 
-    const totalPrice = data.reduce((total, product) => {
-      return total + product.price
-    }, 0)
+    const totalPrice = formatted.format(
+      data.reduce((total, product) => {
+        return total + product.price
+      }, 0)
+    )
 
     setResults({ totalPrice, data: products })
   }
